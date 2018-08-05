@@ -1,16 +1,97 @@
 {
   "name": "learnstorybook",
-  "version": "1.0.0",
-  "private": true,
-  "dependencies": {},
-  "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-contrib-less": "^1.4.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "less": "^2.7.1"
-  },
+  "version": "0.0.0",
   "scripts": {
-    "build-css": "lessc src/style/index.less src/index.css",
-    "watch-css": "npm run build-css && grunt"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "storybook": "start-storybook -p 6006 -s ./src",
+    "build-storybook": "build-storybook",
+    "jest": "jest",
+    "jest:watch": "jest --watch"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "/jest-config/",
+      "/node_modules/"
+    ],
+    "preset": "jest-preset-angular",
+    "setupTestFrameworkScriptFile": "<rootDir>/src/jest-config/setup.ts",
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/jest-preset-angular/AngularSnapshotSerializer.js",
+      "<rootDir>/node_modules/jest-preset-angular/HTMLCommentSerializer.js"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/build/",
+      "/storybook-static/"
+    ],
+    "transform": {
+      "^.+\\.(ts|js|html)$": "<rootDir>/node_modules/jest-preset-angular/preprocessor.js"
+    },
+    "moduleNameMapper": {
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "testURL": "http://localhost/"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^6.0.3",
+    "@angular/common": "^6.0.3",
+    "@angular/compiler": "^6.0.3",
+    "@angular/core": "^6.0.3",
+    "@angular/forms": "^6.0.3",
+    "@angular/http": "^6.0.3",
+    "@angular/platform-browser": "^6.0.3",
+    "@angular/platform-browser-dynamic": "^6.0.3",
+    "@angular/router": "^6.0.3",
+    "@ngxs/store": "^3.2.0",
+    "core-js": "^2.5.4",
+    "rxjs": "^6.0.0",
+    "zone.js": "^0.8.26"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.6.8",
+    "@angular/cli": "~6.0.8",
+    "@angular/compiler-cli": "^6.0.3",
+    "@angular/language-service": "^6.0.3",
+    "@storybook/addon-actions": "^3.4.8",
+    "@storybook/addon-links": "^3.4.8",
+    "@storybook/addon-notes": "^3.4.8",
+    "@storybook/addon-storyshots": "^3.4.8",
+    "@storybook/addons": "^3.4.8",
+    "@storybook/angular": "^3.4.8",
+    "@types/jasmine": "~2.8.6",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
+    "codelyzer": "~4.2.1",
+    "css-loader": "^1.0.0",
+    "husky": "^0.14.3",
+    "identity-obj-proxy": "^3.0.0",
+    "jasmine-core": "~2.99.1",
+    "jasmine-spec-reporter": "~4.2.1",
+    "jest": "^23.4.1",
+    "jest-preset-angular": "^5.2.3",
+    "karma": "~1.7.1",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-coverage-istanbul-reporter": "~2.0.0",
+    "karma-jasmine": "~1.1.1",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "less-loader": "^4.1.0",
+    "pretty-quick": "^1.6.0",
+    "protractor": "~5.3.0",
+    "storybook-chromatic": "^1.0.1",
+    "style-loader": "^0.21.0",
+    "ts-node": "~5.0.1",
+    "tslint": "~5.9.1",
+    "typescript": "~2.7.2"
   }
 }
